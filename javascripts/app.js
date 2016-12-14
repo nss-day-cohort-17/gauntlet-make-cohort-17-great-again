@@ -79,7 +79,7 @@ function grabName() {
 }
 
 //event listener for apply name
-document.querySelector("#select_class").addEventListener("click", grabName);
+$("#select_class").click(grabName);
 
 
 
@@ -91,11 +91,19 @@ function applyClass(e) {
   var whichClass = e.target.innerText.toLowerCase();
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
+  if (whichClassCase === "Suprise me") {
+    console.log("cows");
+  } else if(whichClassCase === "Select weapon") {
+
+  } else {
+  currentPlayer = new Gauntlet.GuildHall[whichClassCase];
+  }
   console.log(whichClassCase);
+  console.log(currentPlayer);
 }
 
 
 
 //event listener for each button
 
-document.querySelector("#class-select").addEventListener("click", applyClass);
+$("#class-select").click(applyClass);
