@@ -91,19 +91,55 @@ function applyClass(e) {
   var whichClass = e.target.innerText.toLowerCase();
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
-  if (whichClassCase === "Suprise me") {
+  if (whichClassCase === "Surprise me") {
     console.log("cows");
   } else if(whichClassCase === "Select weapon") {
 
   } else {
   currentPlayer = new Gauntlet.GuildHall[whichClassCase];
   }
-  console.log(whichClassCase);
-  console.log(currentPlayer);
+  console.log("Your choice: ", whichClassCase);
 }
 
 
 
-//event listener for each button
+//event listener for each class button
 
 $("#class-select").click(applyClass);
+
+
+
+//Pick Weapon
+
+function applyWeapon(e)  {
+
+  var whichClass = e.target.innerText.toLowerCase();
+  var whichClassWordsArray = whichClass.split(" ");
+  var whichClassCase;
+  var words = "";
+  for (var i = 0; i < whichClassWordsArray.length; i++) {
+    console.log(whichClassWordsArray[i]);
+    words += (whichClassWordsArray[i].toString()[0].toUpperCase() + whichClassWordsArray[i].toString().slice(1));
+    }
+    whichClassCase = words;
+
+  if (whichClassCase === "SurpriseMe") {
+    console.log("cows");
+  } else if(whichClassCase === "SelectSpell") {
+
+  } else {
+    //create a new weapon of that type
+    //put it in the array of weapons for the currentPlayer ***IN PROGRESS*****
+
+  currentPlayer.weapon = [whichClassCase];
+  }
+  console.log(currentPlayer);
+  console.log("Your weapon: ", whichClassCase);
+}
+
+
+
+//event listener for each weapon button
+
+
+$("#weapon-select").click(applyWeapon);
