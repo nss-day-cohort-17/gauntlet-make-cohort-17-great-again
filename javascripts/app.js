@@ -64,3 +64,23 @@ $(document).ready(function() {
   });
 
 });
+
+
+
+//Capture Player Name
+
+
+
+//event listener for apply name
+
+function grabName() {
+  if(document.querySelector("#player-name").value === "") {
+    Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
+  } else {
+     Gauntlet.Combatants.Player.prototype.name = document.querySelector("#player-name").value;
+  }
+  console.log(Gauntlet.Combatants.Player.prototype.name);
+}
+
+
+document.querySelector("#select_class").addEventListener("click", grabName);
