@@ -69,10 +69,6 @@ $(document).ready(function() {
 
 //Capture Player Name
 
-
-
-//event listener for apply name
-
 function grabName() {
   if(document.querySelector("#player-name").value === "") {
     Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
@@ -82,5 +78,24 @@ function grabName() {
   console.log(Gauntlet.Combatants.Player.prototype.name);
 }
 
-
+//event listener for apply name
 document.querySelector("#select_class").addEventListener("click", grabName);
+
+
+
+//Apply Class
+var currentPlayer;
+
+function applyClass(e) {
+
+  var whichClass = e.target.innerText.toLowerCase();
+  var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
+
+  console.log(whichClassCase);
+}
+
+
+
+//event listener for each button
+
+document.querySelector("#class-select").addEventListener("click", applyClass);
