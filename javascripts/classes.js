@@ -142,16 +142,16 @@ Gauntlet.GuildHall.Thief.prototype = new Gauntlet.GuildHall.Stealth();
 
 Gauntlet.GuildHall.Ninja = function() {
   this.name = "Ninja";
-  this.healthBonus = this.healthBonus - 5;
-  this.strengthBonus = this.strengthBonus - 20;
-  this.stealthBonus = this.stealthBonus + 30;
+  this.healthBonus = this.healthBonus - 10;
+  this.strengthBonus = this.strengthBonus + 20;
+  this.stealthBonus = this.stealthBonus + 40;
 };
 Gauntlet.GuildHall.Ninja.prototype = new Gauntlet.GuildHall.Stealth();
 
 Gauntlet.GuildHall.Assassin = function() {
   this.name = "Assassin";
-  this.healthBonus = this.healthBonus - 5;
-  this.strengthBonus = this.strengthBonus - 20;
-  this.stealthBonus = this.stealthBonus + 30;
+  this.healthBonus = this.healthBonus + 0;
+  this.strengthBonus = this.strengthBonus + 0;
+  this.stealthBonus = this.stealthBonus + 20;
 };
 Gauntlet.GuildHall.Assassin.prototype = new Gauntlet.GuildHall.Stealth();
