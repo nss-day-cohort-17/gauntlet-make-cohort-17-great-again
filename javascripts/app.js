@@ -39,28 +39,10 @@ $(document).ready(function() {
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
         break;
-
-    }
-
-    if (moveAlong) {
-      $(".card").hide();
-      $("." + nextCard).show();
-    }
-  });
-
-/*
-    When any button with card__link class is clicked,
-    move on to the next view.
-   */
-  $(".card__link").click(function(e) {
-    var nextCard = $(this).attr("next");
-    var moveAlong = false;
-
-    switch (nextCard) {
-      case "card--class":
+      case "card--spell":
         moveAlong = ($("#player-name").val() !== "");
         break;
-      case "card--weapon":
+      case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         break;
     }
@@ -70,7 +52,6 @@ $(document).ready(function() {
       $("." + nextCard).show();
     }
   });
-
 
 
   /*
