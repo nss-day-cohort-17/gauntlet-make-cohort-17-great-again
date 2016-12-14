@@ -21,7 +21,7 @@ body {
 /*
   Section styles
  */
-.card { 
+.card {
   display: none;
 }
 
@@ -37,6 +37,15 @@ body {
   margin: 30px 0 0 0;
   text-align: center;
 }
+
+.battle-wrapper {
+  height: 100%;
+  width: 100%;
+  background-image: url("../images/mountain-field.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 
 
 /*
