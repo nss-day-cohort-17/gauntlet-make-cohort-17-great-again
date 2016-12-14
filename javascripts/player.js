@@ -40,9 +40,20 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
-  this.weapon = newWeapon;
-}
+Gauntlet.Combatants.Player.prototype.generateWeapon = function(newWeapon) {
+  //this.weapon = newWeapon;
+
+  var random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+
+  // Get the string at the index
+  var randomWeapon = this.allowedWeapons[random];
+console.log(randomWeapon)
+  // Composes the corresponding player class into the player object
+  this.weapon = new Gauntlet.Armory[randomWeapon]();
+
+  // Add the health bonus
+  return this.weapon;
+};
 
 Gauntlet.Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
@@ -60,7 +71,7 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
 };
 
 /*
-  Define the base properties for a human in a 
+  Define the base properties for a human in a
   constructor function.
  */
 Gauntlet.Combatants.Human = function() {
@@ -74,12 +85,13 @@ Gauntlet.Combatants.Human = function() {
   this.skinColor = this.skinColors[randomSkin];
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+  this.allowedWeapons = ["Dagger","BroadSword","WarAxe"]
 };
 Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
 
 
 /*
-  Define the base properties for a monster in a 
+  Define the base properties for a monster in a
   constructor function.
  */
 Gauntlet.Combatants.Monster = function() {
@@ -89,4 +101,3 @@ Gauntlet.Combatants.Monster = function() {
 };
 
 Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
-
