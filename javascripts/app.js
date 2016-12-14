@@ -39,6 +39,12 @@ $(document).ready(function() {
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
         break;
+      case "card--spell":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
+      case "card--battleground":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
     }
 
     if (moveAlong) {
@@ -46,6 +52,7 @@ $(document).ready(function() {
       $("." + nextCard).show();
     }
   });
+
 
   /*
     When the back button clicked, move back a view
