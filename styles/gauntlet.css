@@ -69,14 +69,22 @@ body {
 }
 
 .battleCardWrapper {
-  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
 }
 
 .battleCard {
-  min-width: 40%;
-  background-image: url("images/paper.png");
+  display: inline-block;
+  width: 25%;
+  font-family: 'Amatica SC', cursive;
+  color: white;
+  text-align: center;
+  background: url(images/paper.png) rgba(0,0,0,0.5);
   background-repeat: no-repeat;
   background-size: cover;
+  margin: 0 40px 0 40px;
 }
 
 .vs {
