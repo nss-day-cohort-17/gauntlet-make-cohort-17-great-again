@@ -37,7 +37,7 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (currentPlayer !== undefined);
         break;
       case "card--spell":
         moveAlong = ($("#player-name").val() !== "");
