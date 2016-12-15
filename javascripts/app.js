@@ -31,6 +31,14 @@ var playerHealth = 0;
 var enemyHealth = 0;
 
 
+// initialize tooltips
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+
+
 /*
   Test code to generate a spell
  */
