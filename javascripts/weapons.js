@@ -16,7 +16,7 @@ Gauntlet.Armory.Dagger = function() {
   this.damage = 4;
   this.hands = 1;
 };
-console.log(Gauntlet.Armory.Weapon)
+
 Gauntlet.Armory.Dagger.prototype = new Gauntlet.Armory.Weapon();
 //Dagger.prototype = new Weapon();
 
