@@ -1,3 +1,6 @@
+var totalHealthBonus;
+var totalDamageBonus;
+
 /*
   Test code to generate a human player and an orc player
  */
