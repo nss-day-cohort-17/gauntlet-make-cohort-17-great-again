@@ -77,7 +77,8 @@ $(".no-spell").hide();
           loadCards();
         }
         break;
-    }
+      }
+
 
     if (moveAlong) {
       $(".card").hide();
@@ -107,6 +108,7 @@ function grabName() {
      userName = $("#player-name").val();
 
   console.log(userName);
+  }
 }
 
 //event listener for apply name
@@ -238,12 +240,11 @@ function loadCards() {
   //loads player health
   $(".playerHealth").text([currentPlayer.health]);
   //loads enemy name
-  $(".monsterName")
+  $(".monsterName").text("Orc");
   //loads enemy class
-  $(".monsterClass")
+  $(".monsterClass").text([orc.class.name]);
   //loads enemy weapon
-  $(".monsterWeapon")
+  $(".monsterWeapon").text([orc.weapon.name]);
   //loads enemy health
-  $(".monsterHealth").html
-
+  $(".monsterHealth").text([orc.health]);
 }
