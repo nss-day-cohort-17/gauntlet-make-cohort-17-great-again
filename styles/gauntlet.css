@@ -1,8 +1,38 @@
 body {
   font-family: "Lato", "Helvetica", "sans-serif";
   margin: 0;
-  padding: 10px;
   font-size: 3em;
+  padding: none;
+  height: 100%;
+  width: 100%;
+  background-image: url("../images/mountain-field.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.letterbox {
+  height: 40px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.letterbox-footer {
+  height: 40px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.cardTitle {
+  font-family: 'Amatica SC', cursive;
+  font-weight: 700;
+  color: black;
 }
 
 .field {
@@ -14,15 +44,21 @@ body {
   padding: 15px 0;
   text-align: center;
   min-width: 500px;
+  font-family: 'Amatica SC', cursive;
+  font-weight: 400;
 }
 
-
+.game-container {
+  padding: none;
+}
 
 /*
   Section styles
  */
-.card { 
+.card {
   display: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .card__prompt {
@@ -32,16 +68,52 @@ body {
   text-transform: uppercase;
 }
 
-.card__button {
-  font-size: 1.1em;
-  margin: 30px 0 0 0;
+.battleCardWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.battleCard {
+  display: inline-block;
+  width: 25%;
+  font-family: 'Amatica SC', cursive;
+  color: white;
+  text-align: center;
+  background: url(images/paper.png) rgba(0,0,0,0.5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 40px 0 40px;
+}
+
+.vs {
+  color: black;
+  font-family: 'Rock Salt', cursive;
+  text-shadow: 0px 3px 0px #b2a98f,
+    0px 14px 10px rgba(15,15,15,0.15),
+    0px 24px 2px rgba(15,15,15,0.1),
+    0px 34px 30px rgba(15,15,15,0.1);
+  font-size: 3em;
   text-align: center;
 }
+
+.attack-btn {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+
 
 
 /*
   Button styles
  */
+.card__button {
+  font-size: 1.1em;
+  margin: 30px 0 0 0;
+  text-align: center;
+}
 
 .btn {
   text-decoration: none;
@@ -55,22 +127,24 @@ body {
   font-weight: 600;
   padding: 10px 5px;
   min-width: 260px;
+  border: 1px solid black;
 }
 
 .btn--orange {
   border-color: #FF4136;
   color: white;
   background-color: #FF4136;
+  border: 1px solid black;
 }
 
 .btn--blue {
-  border-color: #0074D9;
+  border: 1px solid black;
   color: white;
   background-color: #0074D9;
 }
 
 .btn--yellow {
-  border-color: #E4BD00;
+  border: 1px solid black;
   color: white;
   background-color: #F3C500;
 }
