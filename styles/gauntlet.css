@@ -44,6 +44,8 @@ body {
   padding: 15px 0;
   text-align: center;
   min-width: 500px;
+  font-family: 'Amatica SC', cursive;
+  font-weight: 400;
 }
 
 .game-container {
