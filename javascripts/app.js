@@ -30,6 +30,14 @@ console.log("spell: ", spell.toString());
 
 function addBonuses() {
   console.log("currentPlayer:", currentPlayer)
+  console.log("orc:", orc)
+  playerTotalHealthBonus += currentPlayer.healthBonus
+  console.log("health bonus:", playerTotalHealthBonus)
+  playerTotalHealthBonus += currentPlayer.__proto__.healthBonus
+  console.log("health bonus:", playerTotalHealthBonus)
+  playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
+  console.log("int bonus:", playerTotalIntelligenceBonus)
+  playerTotalIntelligenceBonus += currentPlayer.__proto__.intelligenceBonus
 }
 
 $(document).ready(function() {
