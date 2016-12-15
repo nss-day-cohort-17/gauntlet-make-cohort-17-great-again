@@ -14,8 +14,6 @@ console.log(orc.toString());
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {
@@ -66,7 +64,6 @@ $(document).ready(function() {
 });
 
 
-
 //Capture Player Name
 
 function grabName() {
@@ -92,7 +89,10 @@ function applyClass(e) {
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
   if (whichClassCase === "Surprise me") {
-    console.log("cows");
+    console.log(currentPlayer)
+     currentPlayer = new Gauntlet.Combatants.Human()
+    currentPlayer.class = currentPlayer.generateClass()
+    console.log(currentPlayer)
   } else if(whichClassCase === "Select weapon") {
 
   } else {
@@ -123,13 +123,24 @@ function applyWeapon(e)  {
     whichClassCase = words;
 // if you selected Surprise me, will run random weapon function
   if (whichClassCase === "SurpriseMe") {
-    console.log("cows");
+    currentPlayer.weapon = currentPlayer.generateWeapon()
     //if selected select Spell, does nothing and moves on to next card
   } else if(whichClassCase === "SelectSpell") {
 
   }
 //if select Dagger, assigns new Dagger to player
   else if(whichClassCase === "Dagger") {
+
+    currentPlayer.weapon = Gauntlet.Armory.Dagger()
+  }
+//if select Broad Sword, assigns new BroadSword to player
+  else if(whichClassCase === "BroadSword") {
+    currentPlayer.weapon = Gauntlet.Armory.BroadSword();
+  }
+// if selected War Axe, assigns new War Axe to player
+  else if(whichClassCase === "WarAxe") {
+    currentPlayer.weapon = Gauntlet.Armory.WarAxe();
+
     currentPlayer.weapon = new Gauntlet.Armory.Dagger();
   }
 //if select Broad Sword, assigns new BroadSword to player
@@ -139,11 +150,11 @@ function applyWeapon(e)  {
 // if selected War Axe, assigns new War Axe to player
   else if(whichClassCase === "WarAxe") {
     currentPlayer.weapon = new Gauntlet.Armory.WarAxe();
+
   }
 
   console.log("Your weapon: ", whichClassCase);
 }
-
 
 
 //event listener for each weapon button
@@ -158,16 +169,22 @@ function applySpell(e)  {
 
   var whichSpell = e.target.innerText.toLowerCase();
 
+currentPlayer.spell = new Gauntlet.SpellBook.Spell()
 // if you selected Surprise me, will run random spell function
-  if (whichSpell === "SurpriseMe") {
-    console.log("cows");
+  if (whichSpell === "surprise me") {
+    currentPlayer.spell = new Gauntlet.SpellBook.Sphere();
+
+    console.log("spell: ", currentPlayer.spell);
+    //currentPlayer.spell.damageTypes = new Gauntlet.SpellBook.Sphere();
+
+    //currentPlayer.spell.damage = new Gauntlet.SpellBook.Sphere.damage;
     //if selected select Spell, does nothing and moves on to next card
   } else if(whichSpell === "DefeatYourEnemies") {
 
   }
 //if select any spell type, will create a new random Sphere spell with the selected damage type
   else {
-    currentPlayer.spell = new Gauntlet.SpellBook.Spell()
+    //currentPlayer.spell = new Gauntlet.SpellBook.Spell()
       currentPlayer.spell.damageTypes = [whichSpell];
     };
 
