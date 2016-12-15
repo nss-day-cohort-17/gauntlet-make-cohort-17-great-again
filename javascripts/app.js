@@ -1,10 +1,8 @@
 var currentPlayer = {};
 
 var playerTotalHealthBonus = 0;
-var playerTotalIntelligenceBonus = 0;
 var playerTotalDamageBonus = 0;
 var enemyTotalHealthBonus = 0;
-var enemyTotalIntelligenceBonus = 0;
 var enemyTotalDamageBonus = 0;
 
 var playerHealth = 0;
@@ -29,6 +27,8 @@ var spell = new Gauntlet.SpellBook.Sphere();
 console.log("spell: ", spell.toString());
 
 function addBonuses() {
+  var playerTotalIntelligenceBonus = 0;
+  var enemyTotalIntelligenceBonus = 0;
   console.log("currentPlayer:", currentPlayer)
   console.log("orc:", orc)
   playerTotalHealthBonus += currentPlayer.healthBonus
@@ -38,6 +38,11 @@ function addBonuses() {
   playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
   console.log("int bonus:", playerTotalIntelligenceBonus)
   playerTotalIntelligenceBonus += currentPlayer.__proto__.intelligenceBonus
+  console.log("int bonus:", playerTotalIntelligenceBonus)
+  playerTotalStrengthBonus += currentPlayer.strengthBonus
+  console.log("strength bonus:", playerTotalStrengthBonus)
+  playerTotalStrengthBonus += currentPlayer.__proto__.strengthBonus
+  console.log("strength bonus:", playerTotalStrengthBonus)
 }
 
 $(document).ready(function() {
