@@ -182,3 +182,6 @@ function applySpell(e)  {
 
 
 $("#spell-select").click(applySpell);
+
+//event listener for Attack button
+$(".attack-btn").click(combat);
