@@ -29,8 +29,6 @@ console.log(currentEnemy.toString());
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
 
 function addBonuses() {
   console.log("currentPlayer:", currentPlayer)
@@ -55,6 +53,24 @@ $(document).ready(function() {
    */
   $("#player-setup").show();
 
+
+
+
+
+
+/*
+Default parameters for page
+*/
+
+//hides alerts on page load
+//no class alert
+$(".no-name").hide();
+$(".no-class").hide();
+$(".no-weapon").hide();
+$(".no-spell").hide();
+
+
+
   /*
     When any button with card__link class is clicked,
     move on to the next view.
@@ -66,15 +82,24 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        if ($("#player-name").val() === "") {
+          $(".no-name").show();}
         break;
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (currentPlayer !== undefined);
+        if (currentPlayer === undefined) {
+          $(".no-class").show();}
         break;
       case "card--spell":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (currentPlayer.weapon !== undefined);
+        if (currentPlayer.weapon === undefined) {
+          $(".no-weapon").show();}
         break;
       case "card--battleground":
-        moveAlong = ($("#player-name").val() !== "");
+
+        moveAlong = (currentPlayer.spell !== undefined);
+        if (currentPlayer.spell === undefined) {
+          $(".no-spell").show();}
         if (moveAlong) {
           addBonuses();
         }
@@ -98,7 +123,6 @@ $(document).ready(function() {
   });
 
 });
-
 
 
 //Capture Player Name
@@ -125,7 +149,10 @@ function applyClass(e) {
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
   if (whichClassCase === "Surprise me") {
-    console.log("cows");
+    console.log(currentPlayer)
+     currentPlayer = new Gauntlet.Combatants.Human()
+    currentPlayer.class = currentPlayer.generateClass()
+    console.log(currentPlayer)
   } else if(whichClassCase === "Select weapon") {
 
   } else {
@@ -156,13 +183,24 @@ function applyWeapon(e)  {
     whichClassCase = words;
 // if you selected Surprise me, will run random weapon function
   if (whichClassCase === "SurpriseMe") {
-    console.log("cows");
+    currentPlayer.weapon = currentPlayer.generateWeapon()
     //if selected select Spell, does nothing and moves on to next card
   } else if(whichClassCase === "SelectSpell") {
 
   }
 //if select Dagger, assigns new Dagger to player
   else if(whichClassCase === "Dagger") {
+
+    currentPlayer.weapon = Gauntlet.Armory.Dagger()
+  }
+//if select Broad Sword, assigns new BroadSword to player
+  else if(whichClassCase === "BroadSword") {
+    currentPlayer.weapon = Gauntlet.Armory.BroadSword();
+  }
+// if selected War Axe, assigns new War Axe to player
+  else if(whichClassCase === "WarAxe") {
+    currentPlayer.weapon = Gauntlet.Armory.WarAxe();
+
     currentPlayer.weapon = new Gauntlet.Armory.Dagger();
   }
 //if select Broad Sword, assigns new BroadSword to player
@@ -172,11 +210,11 @@ function applyWeapon(e)  {
 // if selected War Axe, assigns new War Axe to player
   else if(whichClassCase === "WarAxe") {
     currentPlayer.weapon = new Gauntlet.Armory.WarAxe();
+
   }
 
   console.log("Your weapon: ", whichClassCase);
 }
-
 
 
 //event listener for each weapon button
@@ -191,16 +229,22 @@ function applySpell(e)  {
 
   var whichSpell = e.target.innerText.toLowerCase();
 
+currentPlayer.spell = new Gauntlet.SpellBook.Spell()
 // if you selected Surprise me, will run random spell function
-  if (whichSpell === "SurpriseMe") {
-    console.log("cows");
+  if (whichSpell === "surprise me") {
+    currentPlayer.spell = new Gauntlet.SpellBook.Sphere();
+
+    console.log("spell: ", currentPlayer.spell);
+    //currentPlayer.spell.damageTypes = new Gauntlet.SpellBook.Sphere();
+
+    //currentPlayer.spell.damage = new Gauntlet.SpellBook.Sphere.damage;
     //if selected select Spell, does nothing and moves on to next card
-  } else if(whichSpell === "DefeatYourEnemies") {
+  } else if(whichSpell === "defeat your enemies") {
 
   }
 //if select any spell type, will create a new random Sphere spell with the selected damage type
   else {
-    currentPlayer.spell = new Gauntlet.SpellBook.Spell()
+    //currentPlayer.spell = new Gauntlet.SpellBook.Spell()
       currentPlayer.spell.damageTypes = [whichSpell];
     };
 
