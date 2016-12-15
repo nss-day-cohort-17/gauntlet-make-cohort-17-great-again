@@ -118,7 +118,6 @@ function applyWeapon(e)  {
   var whichClassCase;
   var words = "";
   for (var i = 0; i < whichClassWordsArray.length; i++) {
-    console.log(whichClassWordsArray[i]);
     words += (whichClassWordsArray[i].toString()[0].toUpperCase() + whichClassWordsArray[i].toString().slice(1));
     }
     whichClassCase = words;
@@ -162,7 +161,6 @@ function applySpell(e)  {
   var whichClassCase;
   var words = "";
   for (var i = 0; i < whichClassWordsArray.length; i++) {
-    console.log(whichClassWordsArray[i]);
     words += (whichClassWordsArray[i].toString()[0].toUpperCase() + whichClassWordsArray[i].toString().slice(1));
     }
     whichClassCase = words;
