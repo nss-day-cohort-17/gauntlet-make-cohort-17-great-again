@@ -1,4 +1,5 @@
 var currentPlayer = {};
+var currentEnemy = {};
 
 // variables to track bonuses
 var playerTotalIntelligenceBonus = 0;
@@ -22,10 +23,10 @@ warrior.generateWeapon() // This will be used for "Surprise me" option
 warrior.generateClass();  // This will be used for "Surprise me" option
 console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
-orc.generateWeapon(Gauntlet.Armory.BroadSword());
-console.log(orc.toString());
+currentEnemy = new Gauntlet.Combatants.Orc();
+currentEnemy.generateClass();
+currentEnemy.generateWeapon(Gauntlet.Armory.BroadSword());
+console.log(currentEnemy.toString());
 
 /*
   Test code to generate a spell
@@ -35,11 +36,7 @@ console.log("spell: ", spell.toString());
 
 function addBonuses() {
   console.log("currentPlayer:", currentPlayer)
-  console.log("orc:", orc)
-  playerTotalHealthBonus += currentPlayer.healthBonus
-  console.log("health bonus:", playerTotalHealthBonus)
-  playerTotalHealthBonus += currentPlayer.__proto__.healthBonus
-  console.log("health bonus:", playerTotalHealthBonus)
+  console.log("orc:", currentEnemy)
   playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
   console.log("int bonus:", playerTotalIntelligenceBonus)
   playerTotalIntelligenceBonus += currentPlayer.__proto__.intelligenceBonus
@@ -52,8 +49,6 @@ function addBonuses() {
   console.log("stealth bonus:", playerTotalStealthBonus)
   playerTotalStealthBonus += currentPlayer.__proto__.stealthBonus
   console.log("stealth bonus:", playerTotalStealthBonus)
-  enemyTotalHealthBonus += currentEnemy.class.healthBonus
-  console.log("orc health bonus:", enemyTotalHealthBonus)
   enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
   console.log("orc int bonus:", enemyTotalIntelligenceBonus)
   enemyTotalStrengthBonus += currentEnemy.class.strengthBonus
