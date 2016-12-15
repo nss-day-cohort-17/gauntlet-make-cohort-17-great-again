@@ -48,7 +48,7 @@ Gauntlet.Combatants.Player.prototype.generateWeapon = function(newWeapon) {
 
   // Get the string at the index
   var randomWeapon = this.allowedWeapons[random];
-console.log(randomWeapon)
+
   // Composes the corresponding player class into the player object
   this.weapon = new Gauntlet.Armory[randomWeapon]();
 

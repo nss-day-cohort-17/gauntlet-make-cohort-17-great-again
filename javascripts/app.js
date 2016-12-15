@@ -67,10 +67,10 @@ $(document).ready(function() {
 //Capture Player Name
 
 function grabName() {
-  if(document.querySelector("#player-name").value === "") {
+  if($("#player-name").val() === "") {
     Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
   } else {
-     Gauntlet.Combatants.Player.prototype.name = document.querySelector("#player-name").value;
+     Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
   }
   console.log(Gauntlet.Combatants.Player.prototype.name);
 }
@@ -130,6 +130,7 @@ function applyWeapon(e)  {
   }
 //if select Dagger, assigns new Dagger to player
   else if(whichClassCase === "Dagger") {
+
     currentPlayer.weapon = Gauntlet.Armory.Dagger()
   }
 //if select Broad Sword, assigns new BroadSword to player
@@ -139,6 +140,17 @@ function applyWeapon(e)  {
 // if selected War Axe, assigns new War Axe to player
   else if(whichClassCase === "WarAxe") {
     currentPlayer.weapon = Gauntlet.Armory.WarAxe();
+
+    currentPlayer.weapon = new Gauntlet.Armory.Dagger();
+  }
+//if select Broad Sword, assigns new BroadSword to player
+  else if(whichClassCase === "BroadSword") {
+    currentPlayer.weapon = new Gauntlet.Armory.BroadSword();
+  }
+// if selected War Axe, assigns new War Axe to player
+  else if(whichClassCase === "WarAxe") {
+    currentPlayer.weapon = new Gauntlet.Armory.WarAxe();
+
   }
 
   console.log("Your weapon: ", whichClassCase);

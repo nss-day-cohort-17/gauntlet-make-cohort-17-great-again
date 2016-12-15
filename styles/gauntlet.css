@@ -81,7 +81,7 @@ body {
   font-family: 'Amatica SC', cursive;
   color: white;
   text-align: center;
-  background: url(images/paper.png) rgba(0,0,0,0.5);
+  background: url(../images/paper.png) rgba(0,0,0,0.5);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 40px 0 40px;
