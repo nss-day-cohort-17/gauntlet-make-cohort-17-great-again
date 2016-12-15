@@ -14,7 +14,7 @@ console.log(orc.toString());
 
 var playerHealth = 0;
 var enemyHealth = 0;
-var userName = "";
+
 
 /*
   Test code to generate a spell
@@ -103,11 +103,11 @@ $(".no-spell").hide();
 
 function grabName() {
   if($("#player-name").val() === "") {
-    userName = "Unknown Adventurer";
+    Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
   } else {
-     userName = $("#player-name").val();
+     Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
 
-  console.log(userName);
+  console.log(Gauntlet.Combatants.Player.prototype.name);
   }
 }
 
@@ -117,7 +117,7 @@ $("#select_class").click(grabName);
 
 
 //Apply Class
-var currentPlayer;
+var currentPlayer  = new Gauntlet.Combatants.Human();
 
 function applyClass(e) {
 
@@ -126,13 +126,13 @@ function applyClass(e) {
 
   if (whichClassCase === "Surprise me") {
     console.log(currentPlayer)
-     currentPlayer = new Gauntlet.Combatants.Human()
+
     currentPlayer.class = currentPlayer.generateClass()
     console.log(currentPlayer)
   } else if(whichClassCase === "Select weapon") {
 
   } else {
-  currentPlayer = new Gauntlet.GuildHall[whichClassCase];
+  currentPlayer.class = new Gauntlet.GuildHall[whichClassCase];
   }
   console.log("Your choice: ", whichClassCase);
 }
@@ -231,14 +231,16 @@ $("#spell-select").click(applySpell);
 //Load Player and Enemy stats onto page -> function called by selecting defeat your enemies if all selections made
 
 function loadCards() {
+  // tabulates health based on random health and healthBonus
+  playerHealth = currentPlayer.health + currentPlayer.class.healthBonus;
   //loads player name
-  $(".playerName").text([userName]);
+  $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
   //loads player class
   $(".playerClass").text([currentPlayer.name]);
   //loads player weapon
   $(".playerWeapon").text([currentPlayer.weapon]);
   //loads player health
-  $(".playerHealth").text([currentPlayer.health]);
+  $(".playerHealth").text([playerHealth]);
   //loads enemy name
   $(".monsterName").text("Orc");
   //loads enemy class
