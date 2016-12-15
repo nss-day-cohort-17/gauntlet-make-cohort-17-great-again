@@ -37,6 +37,19 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
+/*
+  loads in tool tips
+ */
+
+function classTips() {
+
+// use toArray jquery function, iterate through and get info and assign to title
+
+//do same for weapons and spells
+
+
+
+
 
 
 /*
@@ -153,7 +166,6 @@ $(".no-spell").hide();
     move on to the next view.
    */
   $("html").keypress(function(e) {
-    console.log(e);
     if(e.keyCode === 13 ) {
       console.log("enter");
       if ($("#player-name").val() === "") {
