@@ -26,6 +26,11 @@ currentEnemy.generateClass();
 currentEnemy.generateWeapon(Gauntlet.Armory.BroadSword());
 console.log(currentEnemy.toString());
 
+
+var playerHealth = 0;
+var enemyHealth = 0;
+
+
 /*
   Test code to generate a spell
  */
@@ -100,11 +105,17 @@ $(".no-spell").hide();
         moveAlong = (currentPlayer.spell !== undefined);
         if (currentPlayer.spell === undefined) {
           $(".no-spell").show();}
+
+        else if (currentPlayer.spell !== undefined) {
+          loadCards();
+
         if (moveAlong) {
           addBonuses();
+
         }
         break;
-    }
+      }
+
 
     if (moveAlong) {
       $(".card").hide();
@@ -132,8 +143,9 @@ function grabName() {
     Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
   } else {
      Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
-  }
+
   console.log(Gauntlet.Combatants.Player.prototype.name);
+  }
 }
 
 //event listener for apply name
@@ -143,6 +155,9 @@ $("#select_class").click(grabName);
 
 //Apply Class
 
+var currentPlayer  = new Gauntlet.Combatants.Human();
+
+
 function applyClass(e) {
 
   var whichClass = e.target.innerText.toLowerCase();
@@ -150,13 +165,13 @@ function applyClass(e) {
 
   if (whichClassCase === "Surprise me") {
     console.log(currentPlayer)
-     currentPlayer = new Gauntlet.Combatants.Human()
+
     currentPlayer.class = currentPlayer.generateClass()
     console.log(currentPlayer)
   } else if(whichClassCase === "Select weapon") {
 
   } else {
-  currentPlayer = new Gauntlet.GuildHall[whichClassCase];
+  currentPlayer.class = new Gauntlet.GuildHall[whichClassCase];
   }
   console.log("Your choice: ", whichClassCase);
 }
@@ -191,17 +206,7 @@ function applyWeapon(e)  {
 //if select Dagger, assigns new Dagger to player
   else if(whichClassCase === "Dagger") {
 
-    currentPlayer.weapon = Gauntlet.Armory.Dagger()
-  }
-//if select Broad Sword, assigns new BroadSword to player
-  else if(whichClassCase === "BroadSword") {
-    currentPlayer.weapon = Gauntlet.Armory.BroadSword();
-  }
-// if selected War Axe, assigns new War Axe to player
-  else if(whichClassCase === "WarAxe") {
-    currentPlayer.weapon = Gauntlet.Armory.WarAxe();
-
-    currentPlayer.weapon = new Gauntlet.Armory.Dagger();
+    currentPlayer.weapon =  new Gauntlet.Armory.Dagger()
   }
 //if select Broad Sword, assigns new BroadSword to player
   else if(whichClassCase === "BroadSword") {
@@ -260,5 +265,31 @@ currentPlayer.spell = new Gauntlet.SpellBook.Spell()
 
 $("#spell-select").click(applySpell);
 
+
+
+//Load Player and Enemy stats onto page -> function called by selecting defeat your enemies if all selections made
+
+function loadCards() {
+  // tabulates health based on random health and healthBonus
+  playerHealth = currentPlayer.health + currentPlayer.class.healthBonus;
+  //loads player name
+  $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
+  //loads player class
+  $(".playerClass").text([currentPlayer.name]);
+  //loads player weapon
+  $(".playerWeapon").text([currentPlayer.weapon]);
+  //loads player health
+  $(".playerHealth").text([playerHealth]);
+  //loads enemy name
+  $(".monsterName").text("Orc");
+  //loads enemy class
+  $(".monsterClass").text([orc.class.name]);
+  //loads enemy weapon
+  $(".monsterWeapon").text([orc.weapon.name]);
+  //loads enemy health
+  $(".monsterHealth").text([orc.health]);
+}
+
 //event listener for Attack button
 $(".attack-btn").click(combat);
+
