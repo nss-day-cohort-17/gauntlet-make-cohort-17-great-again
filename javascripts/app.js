@@ -1,9 +1,16 @@
 var currentPlayer = {};
 
+// variables to track bonuses
+var playerTotalIntelligenceBonus = 0;
+var enemyTotalIntelligenceBonus = 0;
 var playerTotalHealthBonus = 0;
 var playerTotalDamageBonus = 0;
 var enemyTotalHealthBonus = 0;
 var enemyTotalDamageBonus = 0;
+var playerTotalStrengthBonus = 0;
+var enemyTotalStrengthBonus = 0;
+var playerTotalStealthBonus = 0;
+var enemyTotalStealthBonus = 0;
 
 var playerHealth = 0;
 var enemyHealth = 0;
@@ -27,8 +34,6 @@ var spell = new Gauntlet.SpellBook.Sphere();
 console.log("spell: ", spell.toString());
 
 function addBonuses() {
-  var playerTotalIntelligenceBonus = 0;
-  var enemyTotalIntelligenceBonus = 0;
   console.log("currentPlayer:", currentPlayer)
   console.log("orc:", orc)
   playerTotalHealthBonus += currentPlayer.healthBonus
