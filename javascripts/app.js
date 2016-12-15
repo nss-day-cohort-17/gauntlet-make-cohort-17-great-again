@@ -24,6 +24,20 @@ $(document).ready(function() {
    */
   $("#player-setup").show();
 
+
+
+
+
+
+/*
+Default parameters for page
+*/
+
+//hides alerts on page load
+//no class alert
+$(".no-class").hide()
+
+
   /*
     When any button with card__link class is clicked,
     move on to the next view.
@@ -38,6 +52,8 @@ $(document).ready(function() {
         break;
       case "card--weapon":
         moveAlong = (currentPlayer !== undefined);
+        if (currentPlayer === undefined) {
+          $(".no-class").show();}
         break;
       case "card--spell":
         moveAlong = ($("#player-name").val() !== "");
