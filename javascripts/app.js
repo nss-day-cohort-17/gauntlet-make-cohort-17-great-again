@@ -294,21 +294,22 @@ function loadCards() {
 
 //checks if battle should continue
 function combatValidation(){
-
   if(playerHealth > 0 && currentEnemy.health > 0){
-
-  }else if(playerHealth > 0 && currentEnemy.health <= 0){
+    $(".playerHealth").text([playerHealth]);
+    $(".monsterHealth").text([enemyHealth]);
+    playerHealth -= 5;
+    currentEnemy.health
+  }else if(playerHealth > 0 && enemyHealth <= 0){
     $(".attack-btn").attr("disabled","disabled")
     console.log("you win")
-  }else if(playerHealth <= 0 && currentEnemy.health > 0){
+  }else if(playerHealth <= 0 && enemyHealth > 0){
     $(".attack-btn").attr("disabled","disabled")
     console.log("you lose")
-  }else if(playerHealth <= 0 && currentEnemy.health <= 0){
+  }else if(playerHealth <= 0 && enemyHealth <= 0){
     console.log("you tie")
   }
 }
 
-function()
 
 //event listener for Attack button
 $(".attack-btn").click(combat);
