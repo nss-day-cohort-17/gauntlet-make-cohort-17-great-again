@@ -307,19 +307,28 @@
 
     <section id="battleground" class="card card--battleground container-fluid">
       <div class="battle-wrapper">
-        <article class="playerCard">
-          <p class="playerName"></p>
-          <p class="playerClass"></p>
-          <p class="playerWeapon"></p>
-          <p class="playerHealth"></p>
-        </article>
-        <p class="vs">VS.</p>
-        <article class="monsterCard">
-          <p class="monsterName"></p>
-          <p class="monsterClass"></p>
-          <p class="monsterWeapon"></p>
-          <p class="monsterHealth"></p>
-        </article>
+        <div class="battleCardWrapper row">
+          <article class="playerCard col-md-5">
+            <p class="playerName"></p>
+            <p class="playerClass"></p>
+            <p class="playerWeapon"></p>
+            <p class="playerHealth"></p>
+          </article>
+          <p class="vs col-md-2">VS</p>
+          <article class="monsterCard col-md-5">
+            <p class="monsterName"></p>
+            <p class="monsterClass"></p>
+            <p class="monsterWeapon"></p>
+            <p class="monsterHealth"></p>
+          </article>
+        </div>
+        <div class="attack-btn ">
+          <a class="btn btn--big btn--orange"
+             href="#">
+            <span class="btn__prompt"></span>
+            <span class="btn__text">Attack!</span>
+          </a>
+        </div>
       </div>
     </section>
 
