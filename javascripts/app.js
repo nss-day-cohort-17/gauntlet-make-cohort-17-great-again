@@ -14,6 +14,7 @@ console.log(orc.toString());
 
 var playerHealth = 0;
 var enemyHealth = 0;
+var userName = "";
 
 /*
   Test code to generate a spell
@@ -101,11 +102,11 @@ $(".no-spell").hide();
 
 function grabName() {
   if($("#player-name").val() === "") {
-    Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
+    userName = "Unknown Adventurer";
   } else {
-     Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
-  }
-  console.log(Gauntlet.Combatants.Player.prototype.name);
+     userName = $("#player-name").val();
+
+  console.log(userName);
 }
 
 //event listener for apply name
@@ -164,17 +165,7 @@ function applyWeapon(e)  {
 //if select Dagger, assigns new Dagger to player
   else if(whichClassCase === "Dagger") {
 
-    currentPlayer.weapon = Gauntlet.Armory.Dagger()
-  }
-//if select Broad Sword, assigns new BroadSword to player
-  else if(whichClassCase === "BroadSword") {
-    currentPlayer.weapon = Gauntlet.Armory.BroadSword();
-  }
-// if selected War Axe, assigns new War Axe to player
-  else if(whichClassCase === "WarAxe") {
-    currentPlayer.weapon = Gauntlet.Armory.WarAxe();
-
-    currentPlayer.weapon = new Gauntlet.Armory.Dagger();
+    currentPlayer.weapon =  new Gauntlet.Armory.Dagger()
   }
 //if select Broad Sword, assigns new BroadSword to player
   else if(whichClassCase === "BroadSword") {
@@ -239,13 +230,13 @@ $("#spell-select").click(applySpell);
 
 function loadCards() {
   //loads player name
-  $(".playerName")
+  $(".playerName").text([userName]);
   //loads player class
-  $(".playerClass")
+  $(".playerClass").text([currentPlayer.name]);
   //loads player weapon
-  $(".playerWeapon")
+  $(".playerWeapon").text([currentPlayer.weapon]);
   //loads player health
-  $(".playerHealth")
+  $(".playerHealth").text([currentPlayer.health]);
   //loads enemy name
   $(".monsterName")
   //loads enemy class
