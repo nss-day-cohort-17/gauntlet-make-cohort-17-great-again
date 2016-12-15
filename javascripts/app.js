@@ -304,7 +304,7 @@ function loadCards() {
   //loads enemy weapon
   $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
-  $(".monsterHealth").text([currentEnemy.health]);
+  $(".monsterHealth").text([enemyHealth]);
 }
 
 //event listener for Attack button
