@@ -115,6 +115,7 @@ $(".no-spell").hide();
         }
         break;
       }
+    }
 
 
     if (moveAlong) {
@@ -275,7 +276,7 @@ function loadCards() {
   //loads player name
   $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
   //loads player class
-  $(".playerClass").text([currentPlayer.name]);
+  $(".playerClass").text([currentPlayer.class.name]);
   //loads player weapon
   $(".playerWeapon").text([currentPlayer.weapon]);
   //loads player health
@@ -283,13 +284,12 @@ function loadCards() {
   //loads enemy name
   $(".monsterName").text("Orc");
   //loads enemy class
-  $(".monsterClass").text([orc.class.name]);
+  $(".monsterClass").text([currentEnemy.class.name]);
   //loads enemy weapon
-  $(".monsterWeapon").text([orc.weapon.name]);
+  $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
-  $(".monsterHealth").text([orc.health]);
+  $(".monsterHealth").text([currentEnemy.health]);
 }
 
 //event listener for Attack button
 $(".attack-btn").click(combat);
-
