@@ -38,18 +38,33 @@ var enemyHealth = 0;
 function addBonuses() {
   console.log("currentPlayer:", currentPlayer)
   console.log("orc:", currentEnemy)
-  playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
-  console.log("int bonus:", playerTotalIntelligenceBonus)
-  playerTotalStrengthBonus += currentPlayer.strengthBonus
+  playerTotalStrengthBonus += currentPlayer.class.strengthBonus
   console.log("strength bonus:", playerTotalStrengthBonus)
-  playerTotalStealthBonus += currentPlayer.stealthBonus
-  console.log("stealth bonus:", playerTotalStealthBonus)
-  enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
-  console.log("orc int bonus:", enemyTotalIntelligenceBonus)
   enemyTotalStrengthBonus += currentEnemy.class.strengthBonus
   console.log("orc strength bonus:", enemyTotalStrengthBonus)
-  enemyTotalStealthBonus += currentEnemy.class.stealthBonus
-  console.log("orc stealth bonus:", enemyTotalStealthBonus)
+  console.log(currentPlayer.class.__proto__.magical)
+  if (currentPlayer.class.__proto__.magical === true) {
+    playerTotalIntelligenceBonus += currentPlayer.class.intelligenceBonus
+    console.log("int bonus:", playerTotalIntelligenceBonus)
+    playerTotalDamageBonus = playerTotalIntelligenceBonus;
+  } else if (currentPlayer.class.__proto__.stealthy === true) {
+    playerTotalStealthBonus += currentPlayer.class.stealthBonus
+    console.log("stealth bonus:", playerTotalStealthBonus)
+    playerTotalDamageBonus = playerTotalStealthBonus + playerTotalStrengthBonus
+  } else {
+    playerTotalDamageBonus = playerTotalStrengthBonus
+  }
+  if (currentEnemy.class.__proto__.magical === true) {
+    enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
+    console.log("orc int bonus:", enemyTotalIntelligenceBonus)
+    enemyTotalDamageBonus = enemyTotalIntelligenceBonus
+  } else if (currentEnemy.class.__proto__.stealthy === true){
+    enemyTotalStealthBonus += currentEnemy.class.stealthBonus
+    console.log("orc stealth bonus:", enemyTotalStealthBonus)
+    enemyTotalDamageBonus = enemyTotalStealthBonus + enemyTotalStrengthBonus
+  } else {
+    enemyTotalDamageBonus = enemyTotalStrengthBonus
+  }
 }
 
 $(document).ready(function() {
@@ -292,6 +307,7 @@ $("#spell-select").click(applySpell);
 function loadCards() {
   // tabulates health based on random health and healthBonus
   playerHealth = currentPlayer.health + currentPlayer.class.healthBonus;
+  enemyHealth = currentEnemy.health + currentEnemy.class.healthBonus;
   //loads player name
   $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
   //loads player class
@@ -307,7 +323,7 @@ function loadCards() {
   //loads enemy weapon
   $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
-  $(".monsterHealth").text([currentEnemy.health]);
+  $(".monsterHealth").text([enemyHealth]);
 }
 
 //event listener for Attack button

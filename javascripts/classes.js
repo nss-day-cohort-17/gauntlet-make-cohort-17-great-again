@@ -13,7 +13,7 @@ Gauntlet.GuildHall.PlayerClass = function() {
   this.strengthBonus = 0;
   this.intelligenceBonus = 0;
   this.magical = false;
-
+  this.stealthy = false;
   this.toString = function() {
     return this.name;
   }
@@ -125,7 +125,7 @@ Gauntlet.GuildHall.Sorcerer.prototype = new Gauntlet.GuildHall.Mage();
  */
  Gauntlet.GuildHall.Stealth = function() {
   this.name = "Stealth";
-  this.magical = false;
+  this.stealthy = true;
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.stealthBonus = this.stealthBonus + 20;
