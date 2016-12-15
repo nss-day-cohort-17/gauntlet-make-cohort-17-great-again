@@ -48,6 +48,10 @@ function addBonuses() {
   console.log("strength bonus:", playerTotalStrengthBonus)
   playerTotalStrengthBonus += currentPlayer.__proto__.strengthBonus
   console.log("strength bonus:", playerTotalStrengthBonus)
+  playerTotalStealthBonus += currentPlayer.stealthBonus
+  console.log("stealth bonus:", playerTotalStealthBonus)
+  playerTotalStealthBonus += currentPlayer.__proto__.stealthBonus
+  console.log("stealth bonus:", playerTotalStealthBonus)
 }
 
 $(document).ready(function() {
