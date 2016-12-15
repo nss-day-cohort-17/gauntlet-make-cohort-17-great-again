@@ -4,9 +4,7 @@ var currentEnemy = {};
 // variables to track bonuses
 var playerTotalIntelligenceBonus = 0;
 var enemyTotalIntelligenceBonus = 0;
-var playerTotalHealthBonus = 0;
 var playerTotalDamageBonus = 0;
-var enemyTotalHealthBonus = 0;
 var enemyTotalDamageBonus = 0;
 var playerTotalStrengthBonus = 0;
 var enemyTotalStrengthBonus = 0;
