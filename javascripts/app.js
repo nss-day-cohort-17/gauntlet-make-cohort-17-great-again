@@ -52,6 +52,14 @@ function addBonuses() {
   console.log("stealth bonus:", playerTotalStealthBonus)
   playerTotalStealthBonus += currentPlayer.__proto__.stealthBonus
   console.log("stealth bonus:", playerTotalStealthBonus)
+  enemyTotalHealthBonus += currentEnemy.class.healthBonus
+  console.log("orc health bonus:", enemyTotalHealthBonus)
+  enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
+  console.log("orc int bonus:", enemyTotalIntelligenceBonus)
+  enemyTotalStrengthBonus += currentEnemy.class.strengthBonus
+  console.log("orc strength bonus:", enemyTotalStrengthBonus)
+  enemyTotalStealthBonus += currentEnemy.class.stealthBonus
+  console.log("orc stealth bonus:", enemyTotalStealthBonus)
 }
 
 $(document).ready(function() {
