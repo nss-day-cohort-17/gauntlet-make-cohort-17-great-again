@@ -83,6 +83,7 @@ body {
   border-color: #FF4136;
   color: white;
   background-color: #FF4136;
+  border: 1px solid black;
 }
 
 .btn--blue {
