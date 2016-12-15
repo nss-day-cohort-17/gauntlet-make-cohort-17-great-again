@@ -11,6 +11,10 @@ orc.generateClass();
 orc.generateWeapon(Gauntlet.Armory.BroadSword());
 console.log(orc.toString());
 
+
+var playerHealth = 0;
+var enemyHealth = 0;
+
 /*
   Test code to generate a spell
  */
@@ -68,6 +72,9 @@ $(".no-spell").hide();
         moveAlong = (currentPlayer.spell !== undefined);
         if (currentPlayer.spell === undefined) {
           $(".no-spell").show();}
+        else if (currentPlayer.spell !== undefined) {
+          loadCards();
+        }
         break;
     }
 
@@ -225,3 +232,27 @@ currentPlayer.spell = new Gauntlet.SpellBook.Spell()
 
 
 $("#spell-select").click(applySpell);
+
+
+
+//Load Player and Enemy stats onto page -> function called by selecting defeat your enemies if all selections made
+
+function loadCards() {
+  //loads player name
+  $(".playerName")
+  //loads player class
+  $(".playerClass")
+  //loads player weapon
+  $(".playerWeapon")
+  //loads player health
+  $(".playerHealth")
+  //loads enemy name
+  $(".monsterName")
+  //loads enemy class
+  $(".monsterClass")
+  //loads enemy weapon
+  $(".monsterWeapon")
+  //loads enemy health
+  $(".monsterHealth").html
+
+}
