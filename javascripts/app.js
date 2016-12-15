@@ -116,7 +116,6 @@ $(".no-spell").hide();
           $(".no-weapon").show();}
         break;
       case "card--battleground":
-
         moveAlong = (currentPlayer.spell !== undefined);
         if (currentPlayer.spell === undefined) {
           $(".no-spell").show();}
