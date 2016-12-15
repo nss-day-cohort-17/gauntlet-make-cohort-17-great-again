@@ -125,6 +125,25 @@ $(".no-spell").hide();
   });
 
 
+/*
+    When any enter is hit,
+    move on to the next view.
+   */
+  $("html").keypress(function(e) {
+    console.log(e);
+    if(e.keyCode === 13 ) {
+      console.log("enter");
+      if ($("#player-name").val() === "") {
+            $(".no-name").show();
+      } else if ($("#player-name").val() !== "") {
+          grabName();
+          $(".card--name").hide();
+         $(".card--class").show();
+      }
+   }
+  });
+
+
   /*
     When the back button clicked, move back a view
    */
