@@ -1,3 +1,18 @@
+var currentPlayer = {};
+var currentEnemy = {};
+
+// variables to track bonuses
+var playerTotalIntelligenceBonus = 0;
+var enemyTotalIntelligenceBonus = 0;
+var playerTotalDamageBonus = 0;
+var enemyTotalDamageBonus = 0;
+var playerTotalStrengthBonus = 0;
+var enemyTotalStrengthBonus = 0;
+var playerTotalStealthBonus = 0;
+var enemyTotalStealthBonus = 0;
+
+var playerHealth = 0;
+var enemyHealth = 0;
 /*
   Test code to generate a human player and an orc player
  */
@@ -6,15 +21,31 @@ warrior.generateWeapon() // This will be used for "Surprise me" option
 warrior.generateClass();  // This will be used for "Surprise me" option
 console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
-orc.generateWeapon(Gauntlet.Armory.BroadSword());
-console.log(orc.toString());
+currentEnemy = new Gauntlet.Combatants.Orc();
+currentEnemy.generateClass();
+currentEnemy.generateWeapon(Gauntlet.Armory.BroadSword());
+console.log(currentEnemy.toString());
 
 /*
   Test code to generate a spell
  */
 
+function addBonuses() {
+  console.log("currentPlayer:", currentPlayer)
+  console.log("orc:", currentEnemy)
+  playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
+  console.log("int bonus:", playerTotalIntelligenceBonus)
+  playerTotalStrengthBonus += currentPlayer.strengthBonus
+  console.log("strength bonus:", playerTotalStrengthBonus)
+  playerTotalStealthBonus += currentPlayer.stealthBonus
+  console.log("stealth bonus:", playerTotalStealthBonus)
+  enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
+  console.log("orc int bonus:", enemyTotalIntelligenceBonus)
+  enemyTotalStrengthBonus += currentEnemy.class.strengthBonus
+  console.log("orc strength bonus:", enemyTotalStrengthBonus)
+  enemyTotalStealthBonus += currentEnemy.class.stealthBonus
+  console.log("orc stealth bonus:", enemyTotalStealthBonus)
+}
 
 $(document).ready(function() {
   /*
@@ -65,9 +96,13 @@ $(".no-spell").hide();
           $(".no-weapon").show();}
         break;
       case "card--battleground":
+
         moveAlong = (currentPlayer.spell !== undefined);
         if (currentPlayer.spell === undefined) {
           $(".no-spell").show();}
+        if (moveAlong) {
+          addBonuses();
+        }
         break;
     }
 
@@ -107,7 +142,6 @@ $("#select_class").click(grabName);
 
 
 //Apply Class
-var currentPlayer;
 
 function applyClass(e) {
 
@@ -225,3 +259,6 @@ currentPlayer.spell = new Gauntlet.SpellBook.Spell()
 
 
 $("#spell-select").click(applySpell);
+
+//event listener for Attack button
+$(".attack-btn").click(combat);
