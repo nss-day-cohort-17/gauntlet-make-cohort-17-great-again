@@ -29,6 +29,12 @@ body {
   left: 0;
 }
 
+.cardTitle {
+  font-family: 'Amatica SC', cursive;
+  font-weight: 700;
+  color: black;
+}
+
 .field {
   margin: 20px 0 0 0;
 }
