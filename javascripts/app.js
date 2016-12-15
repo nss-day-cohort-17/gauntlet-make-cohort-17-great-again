@@ -114,13 +114,13 @@ $(".no-spell").hide();
           $(".no-name").show();}
         break;
       case "card--weapon":
-        moveAlong = (currentPlayer !== undefined);
-        if (currentPlayer === undefined) {
+        moveAlong = (currentPlayer.class !== null);
+        if (currentPlayer.class === null) {
           $(".no-class").show();}
         break;
       case "card--spell":
-        moveAlong = (currentPlayer.weapon !== undefined);
-        if (currentPlayer.weapon === undefined) {
+        moveAlong = (currentPlayer.weapon !== null);
+        if (currentPlayer.weapon === null) {
           $(".no-weapon").show();}
         break;
       case "card--battleground":
