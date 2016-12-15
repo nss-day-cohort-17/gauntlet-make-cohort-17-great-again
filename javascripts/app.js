@@ -1,10 +1,14 @@
 var currentPlayer = {};
 
 var playerTotalHealthBonus = 0;
+var playerTotalIntelligenceBonus = 0;
 var playerTotalDamageBonus = 0;
 var enemyTotalHealthBonus = 0;
+var enemyTotalIntelligenceBonus = 0;
 var enemyTotalDamageBonus = 0;
 
+var playerHealth = 0;
+var enemyHealth = 0;
 /*
   Test code to generate a human player and an orc player
  */
