@@ -151,3 +151,42 @@ function applyWeapon(e)  {
 
 
 $("#weapon-select").click(applyWeapon);
+
+
+//Pick Spell
+
+function applySpell(e)  {
+
+  var whichClass = e.target.innerText.toLowerCase();
+  var whichClassWordsArray = whichClass.split(" ");
+  var whichClassCase;
+  var words = "";
+  for (var i = 0; i < whichClassWordsArray.length; i++) {
+    console.log(whichClassWordsArray[i]);
+    words += (whichClassWordsArray[i].toString()[0].toUpperCase() + whichClassWordsArray[i].toString().slice(1));
+    }
+    whichClassCase = words;
+// if you selected Surprise me, will run random spell function
+  if (whichClassCase === "SurpriseMe") {
+    console.log("cows");
+    //if selected select Spell, does nothing and moves on to next card
+  } else if(whichClassCase === "DefeatYourEnemies") {
+
+  }
+//if select any spell type, will create a new random Sphere spell with the selected damage type
+  else {
+    currentPlayer.spell = new Gauntlet.SpellBook.Spell()
+      currentPlayer.spell.damageTypes = [whichClassCase];
+    };
+
+
+  console.log(currentPlayer)
+  console.log("Your spell: ", whichClassCase);
+}
+
+
+
+//event listener for each spell button
+
+
+$("#spell-select").click(applySpell);
