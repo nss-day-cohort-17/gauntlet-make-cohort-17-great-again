@@ -119,6 +119,7 @@ body {
   font-weight: 600;
   padding: 10px 5px;
   min-width: 260px;
+  border: 1px solid black;
 }
 
 .btn--orange {
@@ -129,13 +130,13 @@ body {
 }
 
 .btn--blue {
-  border-color: #0074D9;
+  border: 1px solid black;
   color: white;
   background-color: #0074D9;
 }
 
 .btn--yellow {
-  border-color: #E4BD00;
+  border: 1px solid black;
   color: white;
   background-color: #F3C500;
 }
