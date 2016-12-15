@@ -37,15 +37,9 @@ function addBonuses() {
   console.log("orc:", currentEnemy)
   playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
   console.log("int bonus:", playerTotalIntelligenceBonus)
-  playerTotalIntelligenceBonus += currentPlayer.__proto__.intelligenceBonus
-  console.log("int bonus:", playerTotalIntelligenceBonus)
   playerTotalStrengthBonus += currentPlayer.strengthBonus
   console.log("strength bonus:", playerTotalStrengthBonus)
-  playerTotalStrengthBonus += currentPlayer.__proto__.strengthBonus
-  console.log("strength bonus:", playerTotalStrengthBonus)
   playerTotalStealthBonus += currentPlayer.stealthBonus
-  console.log("stealth bonus:", playerTotalStealthBonus)
-  playerTotalStealthBonus += currentPlayer.__proto__.stealthBonus
   console.log("stealth bonus:", playerTotalStealthBonus)
   enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
   console.log("orc int bonus:", enemyTotalIntelligenceBonus)
