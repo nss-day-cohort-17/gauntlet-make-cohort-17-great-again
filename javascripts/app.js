@@ -1,3 +1,5 @@
+var currentPlayer = {};
+
 var playerTotalHealthBonus = 0;
 var playerTotalDamageBonus = 0;
 var enemyTotalHealthBonus = 0;
@@ -89,7 +91,6 @@ $("#select_class").click(grabName);
 
 
 //Apply Class
-var currentPlayer;
 
 function applyClass(e) {
 
