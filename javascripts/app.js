@@ -122,18 +122,26 @@ function applyWeapon(e)  {
     words += (whichClassWordsArray[i].toString()[0].toUpperCase() + whichClassWordsArray[i].toString().slice(1));
     }
     whichClassCase = words;
-
+// if you selected Surprise me, will run random weapon function
   if (whichClassCase === "SurpriseMe") {
     console.log("cows");
+    //if selected select Spell, does nothing and moves on to next card
   } else if(whichClassCase === "SelectSpell") {
 
-  } else {
-    //create a new weapon of that type
-    //put it in the array of weapons for the currentPlayer ***IN PROGRESS*****
-
-  currentPlayer.weapon = [whichClassCase];
   }
-  console.log(currentPlayer);
+//if select Dagger, assigns new Dagger to player
+  else if(whichClassCase === "Dagger") {
+    currentPlayer.weapon = new Dagger();
+  }
+//if select Broad Sword, assigns new BroadSword to player
+  else if(whichClassCase === "BroadSword") {
+    currentPlayer.weapon = new BroadSword();
+  }
+// if selected War Axe, assigns new War Axe to player
+  else if(whichClassCase === "WarAxe") {
+    currentPlayer.weapon = new WarAxe();
+  }
+
   console.log("Your weapon: ", whichClassCase);
 }
 
