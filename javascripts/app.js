@@ -288,6 +288,7 @@ $("#spell-select").click(applySpell);
 function loadCards() {
   // tabulates health based on random health and healthBonus
   playerHealth = currentPlayer.health + currentPlayer.class.healthBonus;
+  enemyHealth = currentEnemy.health + currentEnemy.class.healthBonus;
   //loads player name
   $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
   //loads player class
