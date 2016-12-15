@@ -35,7 +35,11 @@ Default parameters for page
 
 //hides alerts on page load
 //no class alert
-$(".no-class").hide()
+$(".no-name").hide();
+$(".no-class").hide();
+$(".no-weapon").hide();
+$(".no-spell").hide();
+
 
 
   /*
@@ -49,6 +53,8 @@ $(".no-class").hide()
     switch (nextCard) {
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        if ($("#player-name").val() === "") {
+          $(".no-name").show();}
         break;
       case "card--weapon":
         moveAlong = (currentPlayer !== undefined);
@@ -56,10 +62,14 @@ $(".no-class").hide()
           $(".no-class").show();}
         break;
       case "card--spell":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (currentPlayer.weapon !== undefined);
+        if (currentPlayer.weapon === undefined) {
+          $(".no-weapon").show();}
         break;
       case "card--battleground":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (currentPlayer.spell !== undefined);
+        if (currentPlayer.spell === undefined) {
+          $(".no-spell").show();}
         break;
     }
 
@@ -178,7 +188,7 @@ function applySpell(e)  {
   if (whichSpell === "SurpriseMe") {
     console.log("cows");
     //if selected select Spell, does nothing and moves on to next card
-  } else if(whichSpell === "DefeatYourEnemies") {
+  } else if(whichSpell === "defeat your enemies") {
 
   }
 //if select any spell type, will create a new random Sphere spell with the selected damage type
