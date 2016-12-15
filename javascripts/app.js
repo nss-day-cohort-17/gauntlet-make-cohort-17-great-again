@@ -24,6 +24,9 @@ console.log(orc.toString());
 var spell = new Gauntlet.SpellBook.Sphere();
 console.log("spell: ", spell.toString());
 
+function addBonuses() {
+  console.log("currentPlayer:", currentPlayer)
+}
 
 $(document).ready(function() {
   /*
@@ -51,6 +54,9 @@ $(document).ready(function() {
         break;
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
+        if (moveAlong) {
+          addBonuses();
+        }
         break;
     }
 
