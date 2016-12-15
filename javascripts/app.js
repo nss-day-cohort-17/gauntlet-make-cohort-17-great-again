@@ -39,18 +39,33 @@ var enemyHealth = 0;
 function addBonuses() {
   console.log("currentPlayer:", currentPlayer)
   console.log("orc:", currentEnemy)
-  playerTotalIntelligenceBonus += currentPlayer.intelligenceBonus
-  console.log("int bonus:", playerTotalIntelligenceBonus)
-  playerTotalStrengthBonus += currentPlayer.strengthBonus
+  playerTotalStrengthBonus += currentPlayer.class.strengthBonus
   console.log("strength bonus:", playerTotalStrengthBonus)
-  playerTotalStealthBonus += currentPlayer.stealthBonus
-  console.log("stealth bonus:", playerTotalStealthBonus)
-  enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
-  console.log("orc int bonus:", enemyTotalIntelligenceBonus)
   enemyTotalStrengthBonus += currentEnemy.class.strengthBonus
   console.log("orc strength bonus:", enemyTotalStrengthBonus)
-  enemyTotalStealthBonus += currentEnemy.class.stealthBonus
-  console.log("orc stealth bonus:", enemyTotalStealthBonus)
+  console.log(currentPlayer.class.__proto__.magical)
+  if (currentPlayer.class.__proto__.magical === true) {
+    playerTotalIntelligenceBonus += currentPlayer.class.intelligenceBonus
+    console.log("int bonus:", playerTotalIntelligenceBonus)
+    playerTotalDamageBonus = playerTotalIntelligenceBonus;
+  } else if (currentPlayer.class.__proto__.stealthy === true) {
+    playerTotalStealthBonus += currentPlayer.class.stealthBonus
+    console.log("stealth bonus:", playerTotalStealthBonus)
+    playerTotalDamageBonus = playerTotalStealthBonus + playerTotalStrengthBonus
+  } else {
+    playerTotalDamageBonus = playerTotalStrengthBonus
+  }
+  if (currentEnemy.class.__proto__.magical === true) {
+    enemyTotalIntelligenceBonus += currentEnemy.class.intelligenceBonus
+    console.log("orc int bonus:", enemyTotalIntelligenceBonus)
+    enemyTotalDamageBonus = enemyTotalIntelligenceBonus
+  } else if (currentEnemy.class.__proto__.stealthy === true){
+    enemyTotalStealthBonus += currentEnemy.class.stealthBonus
+    console.log("orc stealth bonus:", enemyTotalStealthBonus)
+    enemyTotalDamageBonus = enemyTotalStealthBonus + enemyTotalStrengthBonus
+  } else {
+    enemyTotalDamageBonus = enemyTotalStrengthBonus
+  }
 }
 
 $(document).ready(function() {
@@ -74,6 +89,7 @@ $(".no-name").hide();
 $(".no-class").hide();
 $(".no-weapon").hide();
 $(".no-spell").hide();
+
 
 
 
@@ -123,6 +139,25 @@ $(".no-spell").hide();
       $(".card").hide();
       $("." + nextCard).show();
     }
+  });
+
+
+/*
+    When any enter is hit,
+    move on to the next view.
+   */
+  $("html").keypress(function(e) {
+    console.log(e);
+    if(e.keyCode === 13 ) {
+      console.log("enter");
+      if ($("#player-name").val() === "") {
+            $(".no-name").show();
+      } else if ($("#player-name").val() !== "") {
+          grabName();
+          $(".card--name").hide();
+         $(".card--class").show();
+      }
+   }
   });
 
 
@@ -274,6 +309,7 @@ $("#spell-select").click(applySpell);
 function loadCards() {
   // tabulates health based on random health and healthBonus
   playerHealth = currentPlayer.health + currentPlayer.class.healthBonus;
+  enemyHealth = currentEnemy.health + currentEnemy.class.healthBonus;
   //loads player name
   $(".playerName").text([Gauntlet.Combatants.Player.prototype.name]);
   //loads player class
@@ -289,7 +325,7 @@ function loadCards() {
   //loads enemy weapon
   $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
-  $(".monsterHealth").text([currentEnemy.health]);
+  $(".monsterHealth").text([enemyHealth]);
 }
 
 //checks if battle should continue
@@ -301,12 +337,18 @@ function combatValidation(){
     currentEnemy.health
   }else if(playerHealth > 0 && enemyHealth <= 0){
     $(".attack-btn").attr("disabled","disabled")
+    $(".card").hide();
+    $(".card--finale").show();
     console.log("you win")
   }else if(playerHealth <= 0 && enemyHealth > 0){
     $(".attack-btn").attr("disabled","disabled")
+    $(".card").hide();
+    $(".card--finale" ).show();
     console.log("you lose")
   }else if(playerHealth <= 0 && enemyHealth <= 0){
     console.log("you tie")
+    $(".card").hide();
+    $(".card--finale").show();
   }
 }
 
