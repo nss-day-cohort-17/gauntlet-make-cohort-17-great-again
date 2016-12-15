@@ -2,6 +2,7 @@ var currentPlayer = {};
 var currentEnemy = {};
 
 // variables to track bonuses
+
 var playerTotalIntelligenceBonus = 0;
 var enemyTotalIntelligenceBonus = 0;
 var playerTotalDamageBonus = 0;
@@ -290,6 +291,24 @@ function loadCards() {
   //loads enemy health
   $(".monsterHealth").text([currentEnemy.health]);
 }
+
+//checks if battle should continue
+function combatValidation(){
+
+  if(playerHealth > 0 && currentEnemy.health > 0){
+
+  }else if(playerHealth > 0 && currentEnemy.health <= 0){
+    $(".attack-btn").attr("disabled","disabled")
+    console.log("you win")
+  }else if(playerHealth <= 0 && currentEnemy.health > 0){
+    $(".attack-btn").attr("disabled","disabled")
+    console.log("you lose")
+  }else if(playerHealth <= 0 && currentEnemy.health <= 0){
+    console.log("you tie")
+  }
+}
+
+function()
 
 //event listener for Attack button
 $(".attack-btn").click(combat);
