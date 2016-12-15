@@ -72,10 +72,12 @@ body {
   margin-top: 10%;
 }
 
-/*.vs-wrap {
-  display: flex;
-  justify-content: center;
-}*/
+.battleCard {
+  min-width: 40%;
+  background-image: url("images/paper.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .vs {
   color: black;
