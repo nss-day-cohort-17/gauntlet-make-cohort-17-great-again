@@ -328,24 +328,24 @@ function loadCards() {
   $(".monsterHealth").text([enemyHealth]);
 }
 
+
 //checks if battle should continue
 function combatValidation(){
   if(playerHealth > 0 && currentEnemy.health > 0){
     $(".playerHealth").text([playerHealth]);
     $(".monsterHealth").text([enemyHealth]);
-    playerHealth -= 5;
-    currentEnemy.health
   }else if(playerHealth > 0 && enemyHealth <= 0){
-    $(".attack-btn").attr("disabled","disabled")
+    finaleCard();
     $(".card").hide();
     $(".card--finale").show();
     console.log("you win")
   }else if(playerHealth <= 0 && enemyHealth > 0){
-    $(".attack-btn").attr("disabled","disabled")
+    finaleCard();
     $(".card").hide();
     $(".card--finale" ).show();
     console.log("you lose")
   }else if(playerHealth <= 0 && enemyHealth <= 0){
+    finaleCard();
     console.log("you tie")
     $(".card").hide();
     $(".card--finale").show();
