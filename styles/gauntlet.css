@@ -71,9 +71,10 @@ body {
 
 .battleCardWrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: stretch;
   margin-top: 30px;
+  position: relative;
 }
 
 .battleCard {
@@ -91,6 +92,15 @@ body {
   margin: 0 40px 0 40px;
 }
 
+.playerCard {
+  right: 600%;
+}
+
+.monsterCard {
+  left: 600%;
+}
+
+
 .playerName {
   margin-top: 1.15em;
 }
@@ -105,6 +115,10 @@ body {
 
 .monsterHealth {
   margin-bottom: 1.35em;
+}
+
+.vs-wrap {
+  align-self: center;
 }
 
 .vs {
@@ -198,6 +212,14 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
+
+/*weapons card layout*/
+
+.weaponsCard {
+  display: flex;
+  justify-content: space-between;
+}
+
 .win-finale-card{
   background-image: url("../images/victory-sword.jpg");
   background-size: cover;
@@ -210,4 +232,24 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.tie-finale-card{
+  background-image: url("../images/police.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.finale-card-win-header{
+  color:white;
+  background-color: rgba(0,0,0, 0.7):
+}
+.finale-card-lose-header{
+  color:black;
+  background-color: rgba(235,5,5, 0.7);
+}
+.finale-card-tie-header{
+  color:white;
+  background-color: rgba(0,0,0, 0.7);
 }

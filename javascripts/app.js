@@ -236,7 +236,10 @@ $(".no-spell").hide();
       $(".card").hide();
       $("." + nextCard).show();
     }
+
+
   });
+
 
 
 /*
@@ -421,6 +424,12 @@ function loadCards() {
   $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
   $(".monsterHealth").text([enemyHealth]);
+  $( ".playerCard" ).animate({right: "0"}, {
+    duration: 1000
+    });
+  $( ".monsterCard" ).animate({left: "0"}, {
+    duration: 1000
+    });
 }
 
 
@@ -435,19 +444,21 @@ function combatValidation(){
     $("body").addClass("win-finale-card");
     $(".card").hide();
     $(".card--finale").show();
-
+    $(".finale-card-win-header").show()
     console.log("you win")
   }else if(playerHealth <= 0 && enemyHealth > 0){
     finaleCard();
     $("body").addClass("lost-finale-card")
     $(".card").hide();
     $(".card--finale" ).show();
+    $(".finale-card-lose-header").show()
     console.log("you lose")
   }else if(playerHealth <= 0 && enemyHealth <= 0){
     finaleCard();
-    console.log("you tie")
+    $("body").addClass("tie-finale-card")
     $(".card").hide();
     $(".card--finale").show();
+    $(".finale-card-tie-header").show()
   }
 }
 
