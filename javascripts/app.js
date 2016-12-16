@@ -61,8 +61,6 @@ function classTips() {
                         ", Stealthy: " + temp.stealthy;
       //assigns tool tip to respective class button.
       $(classButtons[i]).parent().attr("title", htmlString);
-
-      console.log("this is temp:", temp.name);
     }
   }
 
@@ -97,6 +95,26 @@ function weaponTips() {
 }
 
 
+//For Spells
+
+function spellTips() {
+  var spellButtons = $("#spell-select .class__link").toArray();
+  for(var i = 0; i < spellButtons.length; i++) {
+    // ignores the surprise me and defeat your enemies buttons
+    if (spellButtons[i].innerText.trim() === "surprise me" || spellButtons[i].innerText === "defeat your enemies") {
+
+    } else {
+      //select elements, creates text for tool tip
+      var thisClassTemp = spellButtons[i].innerText.toLowerCase().trim();
+      var thisClass;
+      var temp = new Gauntlet.SpellBook.Sphere();
+      var htmlString = "Damage: " + temp.damage;
+      //assigns tool tip to respective class button.
+      $(spellButtons[i]).parent().attr("title", htmlString);
+    }
+  }
+
+}
 
 //do same for weapons and spells
 
@@ -190,6 +208,7 @@ $(".no-spell").hide();
           $(".no-class").show();}
         break;
       case "card--spell":
+        spellTips();
         moveAlong = (currentPlayer.weapon !== null);
         if (currentPlayer.weapon === null) {
           $(".no-weapon").show();}
