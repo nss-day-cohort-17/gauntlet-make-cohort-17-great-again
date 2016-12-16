@@ -30,10 +30,4 @@ function finaleCard(){
   $(".monsterTotalDamage").append(enemyTotalDamage);
   //loads enemy health
   $(".monsterEndingHealth").append(enemyHealth);
-    $( ".playerCard" ).animate({right: "0"}, {
-    duration: 1000
-    });
-  $( ".monsterCard" ).animate({left: "0"}, {
-    duration: 1000
-    });
 }

@@ -71,8 +71,8 @@ body {
 
 .battleCardWrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: stretch;
   margin-top: 30px;
   position: relative;
 }
@@ -115,6 +115,10 @@ body {
 
 .monsterHealth {
   margin-bottom: 1.35em;
+}
+
+.vs-wrap {
+  align-self: center;
 }
 
 .vs {
