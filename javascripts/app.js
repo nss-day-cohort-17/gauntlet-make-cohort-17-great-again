@@ -52,10 +52,10 @@ function classTips() {
       var htmlString = "Strength Bonus: " + Gauntlet.GuildHall[thisClass].prototype.strengthBonus +
                         ", Intelligence Bonus: "+ Gauntlet.GuildHall[thisClass].prototype.intelligenceBonus +
                         ", Health Bonus: " + Gauntlet.GuildHall[thisClass].prototype.healthBonus +
-                        ", Magical?: " + Gauntlet.GuildHall[thisClass].prototype.magical +
-                        ", Stealthy?: " + Gauntlet.GuildHall[thisClass].prototype.stealthy;
-      $(this).parent().parent().attr("title", [htmlString] );
-      console.log(thisClass);
+                        ", Magical: " + Gauntlet.GuildHall[thisClass].prototype.magical +
+                        ", Stealthy: " + Gauntlet.GuildHall[thisClass].prototype.stealthy;
+      $(classButtons[i]).parent().attr("title", htmlString);
+      console.log(classButtons[i]);
       console.log(htmlString);
       console.log(Gauntlet.GuildHall[thisClass].prototype.healthBonus)
       //select elements, assign title
