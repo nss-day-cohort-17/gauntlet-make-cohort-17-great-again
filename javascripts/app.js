@@ -2,6 +2,7 @@ var currentPlayer = {};
 var currentEnemy = {};
 
 // variables to track bonuses
+
 var playerTotalIntelligenceBonus = 0;
 var enemyTotalIntelligenceBonus = 0;
 var playerTotalDamageBonus = 0;
@@ -88,6 +89,7 @@ $(".no-name").hide();
 $(".no-class").hide();
 $(".no-weapon").hide();
 $(".no-spell").hide();
+
 
 
 
@@ -333,6 +335,35 @@ function loadCards() {
     duration: 1000
     });
 }
+
+
+//checks if battle should continue
+function combatValidation(){
+  if(playerHealth > 0 && enemyHealth > 0){
+    $(".playerHealth").text([playerHealth]);
+    $(".monsterHealth").text([enemyHealth]);
+    //enemyHealth -= 70;
+  }else if(playerHealth > 0 && enemyHealth <= 0){
+    finaleCard();
+    $("body").addClass("win-finale-card");
+    $(".card").hide();
+    $(".card--finale").show();
+
+    console.log("you win")
+  }else if(playerHealth <= 0 && enemyHealth > 0){
+    finaleCard();
+    $("body").addClass("lost-finale-card")
+    $(".card").hide();
+    $(".card--finale" ).show();
+    console.log("you lose")
+  }else if(playerHealth <= 0 && enemyHealth <= 0){
+    finaleCard();
+    console.log("you tie")
+    $(".card").hide();
+    $(".card--finale").show();
+  }
+}
+
 
 //event listener for Attack button
 $(".attack-btn").click(combat);
