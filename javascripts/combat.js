@@ -11,7 +11,7 @@ function combat() {
   enemyHealth = enemyHealth - playerDamage;
   playerHealth = playerHealth - enemyDamage;
   console.log("playerHealth:", playerHealth, "enemyHealth", enemyHealth)
-  playerTotalDamageBonus += playerDamage;
+  playerTotalDamage += playerDamage;
   enemyTotalDamage += enemyDamage;
   combatValidation()
 }
