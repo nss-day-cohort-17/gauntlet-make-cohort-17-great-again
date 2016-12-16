@@ -11,8 +11,8 @@ function combat() {
   enemyHealth = enemyHealth - playerDamage;
   playerHealth = playerHealth - enemyDamage;
   console.log("playerHealth:", playerHealth, "enemyHealth", enemyHealth)
-  playerTotalDamageBonus -= playerDamage;
-  enemyTotalDamage -= enemyDamage;
+  playerTotalDamageBonus += playerDamage;
+  enemyTotalDamage += enemyDamage;
   combatValidation()
 }
 
@@ -23,11 +23,11 @@ function finaleCard(){
   //loads player weapon
   $(".playerTotalDamage").append(playerTotalDamageBonus);
   //loads player health
-  $(".playerHealth").append(playerHealth);
+  $(".playerEndingHealth").append(playerHealth);
   //loads enemy class
   $(".monsterDamage").append(enemyDamage);
   //loads enemy weapon
   $(".monsterTotalDamage").append(enemyTotalDamage);
   //loads enemy health
-  $(".monsterHealth").append(enemyHealth);
+  $(".monsterEndingHealth").append(enemyHealth);
 }
