@@ -2,6 +2,7 @@ var currentPlayer = {};
 var currentEnemy = {};
 
 // variables to track bonuses
+
 var playerTotalIntelligenceBonus = 0;
 var enemyTotalIntelligenceBonus = 0;
 var playerTotalDamageBonus = 0;
@@ -29,6 +30,101 @@ console.log(currentEnemy.toString());
 
 var playerHealth = 0;
 var enemyHealth = 0;
+
+
+// initialize tooltips
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+ /*
+//   loads in tool tips
+  */
+
+//For Classes
+
+function classTips() {
+  var classButtons = $("#class-select .class__link").toArray();
+  for(var i = 0; i < classButtons.length; i++) {
+    // ignores the surprise me and select weapons buttons
+    if (classButtons[i].innerText.trim() === "surprise me" || classButtons[i].innerText === "Select weapon") {
+
+    } else {
+      //select elements, creates text for tool tip
+      var thisClass = classButtons[i].innerText.toLowerCase().trim();
+      thisClass = thisClass[0].toUpperCase() + thisClass.slice(1);
+       var temp = new Gauntlet.GuildHall[thisClass]();
+      var htmlString = "Strength Bonus: " + temp.strengthBonus +
+                        ", Intelligence Bonus: "+ temp.intelligenceBonus +
+                        ", Health Bonus: " + temp.healthBonus +
+                        ", Magical: " + temp.magical +
+                        ", Stealthy: " + temp.stealthy;
+      //assigns tool tip to respective class button.
+      $(classButtons[i]).parent().attr("title", htmlString);
+    }
+  }
+
+}
+
+//For Weapons
+
+function weaponTips() {
+  var weaponButtons = $("#weapon-select .class__link").toArray();
+  for(var i = 0; i < weaponButtons.length; i++) {
+    // ignores the surprise me and select weapons buttons
+    if (weaponButtons[i].innerText.trim() === "surprise me" || weaponButtons[i].innerText === "Select Spell") {
+
+    } else {
+      //select elements, creates text for tool tip
+      var thisClassTemp = weaponButtons[i].innerText.toLowerCase().trim();
+      var thisClassArray = thisClassTemp.split(" ");
+      var words = "";
+      var thisClass;
+      for (var j = 0; j < thisClassArray.length; j++) {
+        words += (thisClassArray[j].toString()[0].toUpperCase() + thisClassArray[j].toString().slice(1));
+        }
+      thisClass = words;
+      var temp = new Gauntlet.Armory[thisClass]();
+      var htmlString = "Damage: " + temp.damage +
+                        ", Hands Required: "+ temp.hands;
+      //assigns tool tip to respective class button.
+      $(weaponButtons[i]).parent().attr("title", htmlString);
+    }
+  }
+
+}
+
+
+//For Spells
+
+function spellTips() {
+  var spellButtons = $("#spell-select .class__link").toArray();
+  for(var i = 0; i < spellButtons.length; i++) {
+    // ignores the surprise me and defeat your enemies buttons
+    if (spellButtons[i].innerText.trim() === "surprise me" || spellButtons[i].innerText === "defeat your enemies") {
+
+    } else {
+      //select elements, creates text for tool tip
+      var thisClassTemp = spellButtons[i].innerText.toLowerCase().trim();
+      var thisClass;
+      var temp = new Gauntlet.SpellBook.Sphere();
+      var htmlString = "Damage: " + temp.damage;
+      //assigns tool tip to respective class button.
+      $(spellButtons[i]).parent().attr("title", htmlString);
+    }
+  }
+
+}
+
+//do same for weapons and spells
+
+
+
+
+
+
+
 
 
 /*
@@ -91,6 +187,7 @@ $(".no-spell").hide();
 
 
 
+
   /*
     When any button with card__link class is clicked,
     move on to the next view.
@@ -101,18 +198,21 @@ $(".no-spell").hide();
 
     switch (nextCard) {
       case "card--class":
+        classTips();
         moveAlong = ($("#player-name").val() !== "");
         if ($("#player-name").val() === "") {
           $(".no-name").show();}
         break;
       case "card--weapon":
-        moveAlong = (currentPlayer !== undefined);
-        if (currentPlayer === undefined) {
+        weaponTips();
+        moveAlong = (currentPlayer.class !== null);
+        if (currentPlayer.class === null) {
           $(".no-class").show();}
         break;
       case "card--spell":
-        moveAlong = (currentPlayer.weapon !== undefined);
-        if (currentPlayer.weapon === undefined) {
+        spellTips();
+        moveAlong = (currentPlayer.weapon !== null);
+        if (currentPlayer.weapon === null) {
           $(".no-weapon").show();}
         break;
       case "card--battleground":
@@ -147,13 +247,13 @@ $(".no-spell").hide();
     move on to the next view.
    */
   $("html").keypress(function(e) {
-    console.log(e);
     if(e.keyCode === 13 ) {
       console.log("enter");
       if ($("#player-name").val() === "") {
             $(".no-name").show();
       } else if ($("#player-name").val() !== "") {
           grabName();
+          classTips();
           $(".card--name").hide();
          $(".card--class").show();
       }
@@ -180,8 +280,6 @@ function grabName() {
     Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
   } else {
      Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
-
-  console.log(Gauntlet.Combatants.Player.prototype.name);
   }
 }
 
@@ -201,10 +299,10 @@ function applyClass(e) {
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
   if (whichClassCase === "Surprise me") {
-    console.log(currentPlayer)
+
 
     currentPlayer.class = currentPlayer.generateClass()
-    console.log(currentPlayer)
+
   } else if(whichClassCase === "Select weapon") {
 
   } else {
@@ -333,6 +431,35 @@ function loadCards() {
     duration: 1000
     });
 }
+
+
+//checks if battle should continue
+function combatValidation(){
+  if(playerHealth > 0 && enemyHealth > 0){
+    $(".playerHealth").text([playerHealth]);
+    $(".monsterHealth").text([enemyHealth]);
+    //enemyHealth -= 70;
+  }else if(playerHealth > 0 && enemyHealth <= 0){
+    finaleCard();
+    $("body").addClass("win-finale-card");
+    $(".card").hide();
+    $(".card--finale").show();
+
+    console.log("you win")
+  }else if(playerHealth <= 0 && enemyHealth > 0){
+    finaleCard();
+    $("body").addClass("lost-finale-card")
+    $(".card").hide();
+    $(".card--finale" ).show();
+    console.log("you lose")
+  }else if(playerHealth <= 0 && enemyHealth <= 0){
+    finaleCard();
+    console.log("you tie")
+    $(".card").hide();
+    $(".card--finale").show();
+  }
+}
+
 
 //event listener for Attack button
 $(".attack-btn").click(combat);
