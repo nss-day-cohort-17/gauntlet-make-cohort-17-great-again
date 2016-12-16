@@ -136,7 +136,10 @@ $(".no-spell").hide();
       $(".card").hide();
       $("." + nextCard).show();
     }
+
+
   });
+
 
 
 /*
@@ -323,6 +326,12 @@ function loadCards() {
   $(".monsterWeapon").text([currentEnemy.weapon.name]);
   //loads enemy health
   $(".monsterHealth").text([enemyHealth]);
+  $( ".playerCard" ).animate({right: "0"}, {
+    duration: 1000
+    });
+  $( ".monsterCard" ).animate({left: "0"}, {
+    duration: 1000
+    });
 }
 
 //event listener for Attack button

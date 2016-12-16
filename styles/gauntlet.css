@@ -74,6 +74,11 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  position: relative;
+   /* display: inline-block;  to display the 3 div's in same line */
+    /*height: 200px;  height, width and border just added for demo, not mandatory
+    width: 100px;
+    border: 1px solid black;*/
 }
 
 .battleCard {
@@ -90,6 +95,15 @@ body {
   background-size: cover;
   margin: 0 40px 0 40px;
 }
+
+.playerCard {
+  right: 600%; /* Added to avoid the width issue pointed out by DRP96 */
+}
+
+.monsterCard {
+  left: 600%;
+}
+
 
 .playerName {
   margin-top: 1.15em;
