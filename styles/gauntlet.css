@@ -233,3 +233,23 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.tie-finale-card{
+  background-image: url("../images/police.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.finale-card-win-header{
+  color:white;
+  background-color: rgba(0,0,0, 0.7):
+}
+.finale-card-lose-header{
+  color:black;
+  background-color: rgba(235,5,5, 0.7);
+}
+.finale-card-tie-header{
+  color:white;
+  background-color: rgba(0,0,0, 0.7);
+}
