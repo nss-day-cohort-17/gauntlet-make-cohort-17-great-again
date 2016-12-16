@@ -71,14 +71,10 @@ body {
 
 .battleCardWrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: stretch;
   margin-top: 30px;
   position: relative;
-   /* display: inline-block;  to display the 3 div's in same line */
-    /*height: 200px;  height, width and border just added for demo, not mandatory
-    width: 100px;
-    border: 1px solid black;*/
 }
 
 .battleCard {
@@ -97,7 +93,7 @@ body {
 }
 
 .playerCard {
-  right: 600%; /* Added to avoid the width issue pointed out by DRP96 */
+  right: 600%;
 }
 
 .monsterCard {
@@ -119,6 +115,10 @@ body {
 
 .monsterHealth {
   margin-bottom: 1.35em;
+}
+
+.vs-wrap {
+  align-self: center;
 }
 
 .vs {
@@ -212,13 +212,13 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
+
 /*weapons card layout*/
 
 .weaponsCard {
   display: flex;
   justify-content: space-between;
 }
-
 
 .win-finale-card{
   background-image: url("../images/victory-sword.jpg");
