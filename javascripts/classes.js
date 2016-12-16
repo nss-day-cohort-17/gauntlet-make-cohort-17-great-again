@@ -11,6 +11,7 @@ Gauntlet.GuildHall.PlayerClass = function() {
   this.name = "Beggar";
   this.healthBonus = 0;
   this.strengthBonus = 0;
+  this.stealthBonus = 0;
   this.intelligenceBonus = 0;
   this.magical = false;
   this.stealthy = false;

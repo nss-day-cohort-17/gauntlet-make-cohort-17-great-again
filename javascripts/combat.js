@@ -19,15 +19,15 @@ function combat() {
 
 function finaleCard(){
   //loads player class
-  $(".playerDamage").append(playerDamage);
+  $(".playerDamage").append(" "+playerDamage);
   //loads player weapon
-  $(".playerTotalDamage").append(playerTotalDamageBonus);
+  $(".playerTotalDamage").append(" "+playerTotalDamageBonus);
   //loads player health
-  $(".playerEndingHealth").append(playerHealth);
+  $(".playerEndingHealth").append(" "+playerHealth);
   //loads enemy class
-  $(".monsterDamage").append(enemyDamage);
+  $(".monsterDamage").append(" "+enemyDamage);
   //loads enemy weapon
-  $(".monsterTotalDamage").append(enemyTotalDamage);
+  $(".monsterTotalDamage").append(" "+enemyTotalDamage);
   //loads enemy health
-  $(".monsterEndingHealth").append(enemyHealth);
+  $(".monsterEndingHealth").append(" "+enemyHealth);
 }
