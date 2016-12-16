@@ -37,12 +37,34 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-/*
-  loads in tool tips
- */
+// /*
+//   loads in tool tips
+//  */
 
 function classTips() {
+  var classButtons = $("#class-select .class__link").toArray();
+  for(var i = 0; i < classButtons.length; i++) {
+    if (classButtons[i].innerText.trim() === "surprise me" || classButtons[i].innerText === "Select weapon") {
 
+    } else {
+      var thisClass = classButtons[i].innerText.toLowerCase().trim();
+      thisClass = thisClass[0].toUpperCase() + thisClass.slice(1);
+      var htmlString = "Strength Bonus: " + Gauntlet.GuildHall[thisClass].prototype.strengthBonus +
+                        ", Intelligence Bonus: "+ Gauntlet.GuildHall[thisClass].prototype.intelligenceBonus +
+                        ", Health Bonus: " + Gauntlet.GuildHall[thisClass].prototype.healthBonus +
+                        ", Magical?: " + Gauntlet.GuildHall[thisClass].prototype.magical +
+                        ", Stealthy?: " + Gauntlet.GuildHall[thisClass].prototype.stealthy;
+      $(this).parent().parent().attr("title", [htmlString] );
+      console.log(thisClass);
+      console.log(htmlString);
+      console.log(Gauntlet.GuildHall[thisClass].prototype.healthBonus)
+      //select elements, assign title
+    }
+  }
+  console.log(classButtons);
+}
+
+// classTips();
 // use toArray jquery function, iterate through and get info and assign to title
 
 //do same for weapons and spells
