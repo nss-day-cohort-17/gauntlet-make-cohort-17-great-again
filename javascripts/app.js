@@ -276,8 +276,6 @@ function grabName() {
     Gauntlet.Combatants.Player.prototype.name = "Unknown Adventurer";
   } else {
      Gauntlet.Combatants.Player.prototype.name = $("#player-name").val();
-
-  console.log(Gauntlet.Combatants.Player.prototype.name);
   }
 }
 
@@ -297,10 +295,10 @@ function applyClass(e) {
   var whichClassCase = whichClass[0].toUpperCase() + whichClass.slice(1);
 
   if (whichClassCase === "Surprise me") {
-    console.log(currentPlayer)
+
 
     currentPlayer.class = currentPlayer.generateClass()
-    console.log(currentPlayer)
+
   } else if(whichClassCase === "Select weapon") {
 
   } else {
