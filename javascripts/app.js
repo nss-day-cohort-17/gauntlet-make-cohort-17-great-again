@@ -37,37 +37,71 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-// /*
+ /*
 //   loads in tool tips
-//  */
+  */
+
+//For Classes
 
 function classTips() {
   var classButtons = $("#class-select .class__link").toArray();
   for(var i = 0; i < classButtons.length; i++) {
+    // ignores the surprise me and select weapons buttons
     if (classButtons[i].innerText.trim() === "surprise me" || classButtons[i].innerText === "Select weapon") {
 
     } else {
+      //select elements, creates text for tool tip
       var thisClass = classButtons[i].innerText.toLowerCase().trim();
       thisClass = thisClass[0].toUpperCase() + thisClass.slice(1);
-      var htmlString = "Strength Bonus: " + Gauntlet.GuildHall[thisClass].prototype.strengthBonus +
-                        ", Intelligence Bonus: "+ Gauntlet.GuildHall[thisClass].prototype.intelligenceBonus +
-                        ", Health Bonus: " + Gauntlet.GuildHall[thisClass].prototype.healthBonus +
-                        ", Magical: " + Gauntlet.GuildHall[thisClass].prototype.magical +
-                        ", Stealthy: " + Gauntlet.GuildHall[thisClass].prototype.stealthy;
+       var temp = new Gauntlet.GuildHall[thisClass]();
+      var htmlString = "Strength Bonus: " + temp.strengthBonus +
+                        ", Intelligence Bonus: "+ temp.intelligenceBonus +
+                        ", Health Bonus: " + temp.healthBonus +
+                        ", Magical: " + temp.magical +
+                        ", Stealthy: " + temp.stealthy;
+      //assigns tool tip to respective class button.
       $(classButtons[i]).parent().attr("title", htmlString);
-      console.log(classButtons[i]);
-      console.log(htmlString);
-      console.log(Gauntlet.GuildHall[thisClass].prototype.healthBonus)
-      //select elements, assign title
+
+      console.log("this is temp:", temp.name);
     }
   }
-  console.log(classButtons);
+
 }
 
-// classTips();
-// use toArray jquery function, iterate through and get info and assign to title
+//For Weapons
+
+function weaponTips() {
+  var weaponButtons = $("#weapon-select .class__link").toArray();
+  for(var i = 0; i < weaponButtons.length; i++) {
+    // ignores the surprise me and select weapons buttons
+    if (weaponButtons[i].innerText.trim() === "surprise me" || weaponButtons[i].innerText === "Select Spell") {
+
+    } else {
+      //select elements, creates text for tool tip
+      var thisClassTemp = weaponButtons[i].innerText.toLowerCase().trim();
+      var thisClassArray = thisClassTemp.split(" ");
+      var words = "";
+      var thisClass;
+      for (var j = 0; j < thisClassArray.length; j++) {
+        words += (thisClassArray[j].toString()[0].toUpperCase() + thisClassArray[j].toString().slice(1));
+        }
+      thisClass = words;
+      var temp = new Gauntlet.Armory[thisClass]();
+      var htmlString = "Damage: " + temp.damage +
+                        ", Hands Required: "+ temp.hands;
+      //assigns tool tip to respective class button.
+      $(weaponButtons[i]).parent().attr("title", htmlString);
+    }
+  }
+
+}
+
+
 
 //do same for weapons and spells
+
+
+
 
 
 
@@ -144,11 +178,13 @@ $(".no-spell").hide();
 
     switch (nextCard) {
       case "card--class":
+        classTips();
         moveAlong = ($("#player-name").val() !== "");
         if ($("#player-name").val() === "") {
           $(".no-name").show();}
         break;
       case "card--weapon":
+        weaponTips();
         moveAlong = (currentPlayer.class !== null);
         if (currentPlayer.class === null) {
           $(".no-class").show();}
@@ -194,6 +230,7 @@ $(".no-spell").hide();
             $(".no-name").show();
       } else if ($("#player-name").val() !== "") {
           grabName();
+          classTips();
           $(".card--name").hide();
          $(".card--class").show();
       }
