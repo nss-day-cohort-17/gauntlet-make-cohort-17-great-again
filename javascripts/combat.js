@@ -21,7 +21,7 @@ function finaleCard(){
   //loads player class
   $(".playerDamage").append(" "+playerDamage);
   //loads player weapon
-  $(".playerTotalDamage").append(" "+playerTotalDamageBonus);
+  $(".playerTotalDamage").append(" "+playerTotalDamage);
   //loads player health
   $(".playerEndingHealth").append(" "+playerHealth);
   //loads enemy class
