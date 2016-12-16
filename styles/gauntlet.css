@@ -198,6 +198,14 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
+/*weapons card layout*/
+
+.weaponsCard {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .win-finale-card{
   background-image: url("../images/victory-sword.jpg");
   background-size: cover;
